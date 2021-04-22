@@ -57,51 +57,219 @@
                 <ul class="list-unstyled">
                     @if(isset($mego) && $mego -> count() > 0)
                         @foreach($mego as $product)
-                    <li><a href="#" title="">BALDWIN PART NO. <span class="pull-right">{{$product->baldwinPart}}</span></a></li>
-                    <li><a href="#" title="">EXCO PARTNO. <span class="pull-right">{{$product->excopart}}</span></a></li>
-                    <li><a href="#" title="">Length (Inches) <span class="pull-right">{{$product->lengthInch}}</span></a></li>
-                    <li><a href="#" title="">Length (mm) <span class="pull-right">{{$product->lengthMM}}</span></a></li>
-                    <li><a href="#" title="">Width (mm) <span class="pull-right">{{$product->widthMM}}</span></a></li>
-                    <li><a href="#" title="">Height  (mm) <span class="pull-right">{{$product->heightMM}}</span></a></li>
-                    <li><a href="#" title="">Width (Inches) <span class="pull-right">{{$product->widthInches}}</span></a></li>
-                    <li><a href="#" title="">Height (Inches) <span class="pull-right">{{$product->heightInches}}</span></a></li>
-                            <li><a href="#" title="">Outlet <span class="pull-right">{{$product->outlet}}</span></a></li>
-                            <li><a href="#" title="">OD (Inches) <span class="pull-right">{{$product->odInches}}</span></a></li>
-                            <li><a href="#" title="">OD (mm) <span class="pull-right">{{$product->odMM}}</span></a></li>
-                            <li><a href="#" title="">OD2 (Inches) <span class="pull-right">{{$product->baldwinPart}}</span></a></li>
-                            <li><a href="#" title="">OD2 (mm) <span class="pull-right">{{$product->odMM2}}</span></a></li>
-                            <li><a href="#" title="">ID (Inches) <span class="pull-right">{{$product->idInches}}</span></a></li>
-                            <li><a href="#" title="">ID (mm) <span class="pull-right">{{$product->idMM}}</span></a></li>
-                            <li><a href="#" title="">Thread (Sort) <span class="pull-right">{{$product->threadSort}}</span></a></li>
-                            <li><a href="#" title="">Thread (mm) <span class="pull-right">{{$product->threadMM}}</span></a></li>
-                            <li><a href="#" title="">Thread  (Inches) <span class="pull-right">{{$product->threadInches}}</span></a></li>
-                            <li><a href="#" title="">Per Inch <span class="pull-right">{{$product->perInch}}</span></a></li>
-                            <li><a href="#" title="">Gaskets/ I. Gskt. <span class="pull-right">{{$product->gaskets}}</span></a></li>
-                            <li><a href="#" title="">Features / Contains <span class="pull-right">{{$product->features}}</span></a></li>
+                            @if($product->baldwinPart == "-")
+                    <li style="display: none;"><a href="#" title="">BALDWIN PART NO. <span class="pull-right">{{$product->baldwinPart}}</span></a></li>
+                            @else
+                                <li><a href="#" title="">BALDWIN PART NO. <span class="pull-right">{{$product->baldwinPart}}</span></a></li>
+                            @endif
+                                @if($product->excopart == "-")
+                    <li style="display: none;"><a href="#" title="">EXCO PARTNO. <span class="pull-right">{{$product->excopart}}</span></a></li>
+                                @else
+                                    <li><a href="#" title="">EXCO PARTNO. <span class="pull-right">{{$product->excopart}}</span></a></li>
+                                @endif
+                                @if($product->lengthInch == "-")
+                    <li style="display: none;"><a href="#" title="">Length (Inches) <span class="pull-right">{{$product->lengthInch}}</span></a></li>
+                                @else
+                                    <li><a href="#" title="">Length (Inches) <span class="pull-right">{{$product->lengthInch}}</span></a></li>
+                                @endif
+                                @if($product->lengthMM == "-")
+                    <li style="display: none;"><a href="#" title="">Length (mm) <span class="pull-right">{{$product->lengthMM}}</span></a></li>
+                                @else
+                                    <li><a href="#" title="">Length (mm) <span class="pull-right">{{$product->lengthMM}}</span></a></li>
+                                @endif
+                                @if($product->widthMM == "-")
+                    <li style="display: none;"><a href="#" title="">Width (mm) <span class="pull-right">{{$product->widthMM}}</span></a></li>
+                                @else
+                                    <li><a href="#" title="">Width (mm) <span class="pull-right">{{$product->widthMM}}</span></a></li>
+                                @endif
+                                @if($product->heightMM == "-")
+                    <li style="display: none;"><a href="#" title="">Height  (mm) <span class="pull-right">{{$product->heightMM}}</span></a></li>
+                                @else
+                                    <li><a href="#" title="">Height  (mm) <span class="pull-right">{{$product->heightMM}}</span></a></li>
+                                @endif
+                                @if($product->widthInches == "-")
+                    <li style="display: none;"><a href="#" title="">Width (Inches) <span class="pull-right">{{$product->widthInches}}</span></a></li>
+                                @else
+                                    <li><a href="#" title="">Width (Inches) <span class="pull-right">{{$product->widthInches}}</span></a></li>
+                                @endif
+                                @if($product->heightInches == "-")
+                    <li style="display: none;"><a href="#" title="">Height (Inches) <span class="pull-right">{{$product->heightInches}}</span></a></li>
+                                @else
+                                    <li><a href="#" title="">Height (Inches) <span class="pull-right">{{$product->heightInches}}</span></a></li>
+                                @endif
+                                @if($product->outlet == "-")
+                            <li style="display: none;"><a href="#" title="">Outlet <span class="pull-right">{{$product->outlet}}</span></a></li>
+                                @else
+                                    <li><a href="#" title="">Outlet <span class="pull-right">{{$product->outlet}}</span></a></li>
+                                @endif
+                                @if($product->odInches == "-")
+                            <li style="display:none;"><a href="#" title="">OD (Inches) <span class="pull-right">{{$product->odInches}}</span></a></li>
+                                @else
+                                    <li><a href="#" title="">OD (Inches) <span class="pull-right">{{$product->odInches}}</span></a></li>
+                                @endif
+                                @if($product->odMM == "-")
+                            <li style="display: none;"><a href="#" title="">OD (mm) <span class="pull-right">{{$product->odMM}}</span></a></li>
+                                @else
+                                    <li><a href="#" title="">OD (mm) <span class="pull-right">{{$product->odMM}}</span></a></li>
+                                @endif
+                                @if($product->baldwinPart == "-")
+                            <li style="display: none;"><a href="#" title="">OD2 (Inches) <span class="pull-right">{{$product->baldwinPart}}</span></a></li>
+                                @else
+                                    <li><a href="#" title="">OD2 (Inches) <span class="pull-right">{{$product->baldwinPart}}</span></a></li>
+                                @endif
+                                @if($product->odMM2 == "-")
+                            <li style="display: none;"><a href="#" title="">OD2 (mm) <span class="pull-right">{{$product->odMM2}}</span></a></li>
+                                @else
+                                    <li><a href="#" title="">OD2 (mm) <span class="pull-right">{{$product->odMM2}}</span></a></li>
+                                @endif
+                                @if($product->idInches == "-")
+                            <li style="display: none;"><a href="#" title="">ID (Inches) <span class="pull-right">{{$product->idInches}}</span></a></li>
+                                @else
+                                    <li><a href="#" title="">ID (Inches) <span class="pull-right">{{$product->idInches}}</span></a></li>
+                                @endif
+                                @if($product->idMM == "-")
+                            <li style="display: none;"><a href="#" title="">ID (mm) <span class="pull-right">{{$product->idMM}}</span></a></li>
+                                @else
+                                    <li><a href="#" title="">ID (mm) <span class="pull-right">{{$product->idMM}}</span></a></li>
+                                @endif
+                                @if($product->threadSort == "-")
+                            <li style="display: none;"><a href="#" title="">Thread (Sort) <span class="pull-right">{{$product->threadSort}}</span></a></li>
+                                @else
+                                    <li><a href="#" title="">Thread (Sort) <span class="pull-right">{{$product->threadSort}}</span></a></li>
+                                @endif
+                                @if($product->threadMM == "-")
+                            <li style="display: none;"><a href="#" title="">Thread (mm) <span class="pull-right">{{$product->threadMM}}</span></a></li>
+                                @else
+                                    <li><a href="#" title="">Thread (mm) <span class="pull-right">{{$product->threadMM}}</span></a></li>
+                                @endif
+                                @if($product->threadInches == "-")
+                            <li style="display: none;"><a href="#" title="">Thread  (Inches) <span class="pull-right">{{$product->threadInches}}</span></a></li>
+                                @else
+                                    <li><a href="#" title="">Thread  (Inches) <span class="pull-right">{{$product->threadInches}}</span></a></li>
+                                @endif
+                                @if($product->perInch == "-")
+                            <li style="display: none;"><a href="#" title="">Per Inch <span class="pull-right">{{$product->perInch}}</span></a></li>
+                                @else
+                                    <li><a href="#" title="">Per Inch <span class="pull-right">{{$product->perInch}}</span></a></li>
+                                @endif
+                                @if($product->gaskets == "-")
+                            <li style="display: none;"><a href="#" title="">Gaskets/ I. Gskt. <span class="pull-right">{{$product->gaskets}}</span></a></li>
+                                @else
+                                    <li><a href="#" title="">Gaskets/ I. Gskt. <span class="pull-right">{{$product->gaskets}}</span></a></li>
+                                @endif
+                                @if($product->features == "-")
+                            <li style="display: none;"><a href="#" title="">Features / Contains <span class="pull-right">{{$product->features}}</span></a></li>
+                                @else
+                                    <li><a href="#" title="">Features / Contains <span class="pull-right">{{$product->features}}</span></a></li>
+                                @endif
                         @endforeach
                     @elseif(isset($exco) && $exco -> count() > 0)
                         @foreach($exco as $product)
-                            <li><a href="#" title="">BALDWIN PART NO. <span class="pull-right">{{$product->baldwinPart}}</span></a></li>
-                            <li><a href="#" title="">EXCO PARTNO. <span class="pull-right">{{$product->excopart}}</span></a></li>
-                            <li><a href="#" title="">Length (Inches) <span class="pull-right">{{$product->lengthInch}}</span></a></li>
-                            <li><a href="#" title="">Length (mm) <span class="pull-right">{{$product->lengthMM}}</span></a></li>
-                            <li><a href="#" title="">Width (mm) <span class="pull-right">{{$product->widthMM}}</span></a></li>
-                            <li><a href="#" title="">Height  (mm) <span class="pull-right">{{$product->heightMM}}</span></a></li>
-                            <li><a href="#" title="">Width (Inches) <span class="pull-right">{{$product->widthInches}}</span></a></li>
-                            <li><a href="#" title="">Height (Inches) <span class="pull-right">{{$product->heightInches}}</span></a></li>
-                            <li><a href="#" title="">Outlet <span class="pull-right">{{$product->outlet}}</span></a></li>
-                            <li><a href="#" title="">OD (Inches) <span class="pull-right">{{$product->odInches}}</span></a></li>
-                            <li><a href="#" title="">OD (mm) <span class="pull-right">{{$product->odMM}}</span></a></li>
-                            <li><a href="#" title="">OD2 (Inches) <span class="pull-right">{{$product->baldwinPart}}</span></a></li>
-                            <li><a href="#" title="">OD2 (mm) <span class="pull-right">{{$product->odMM2}}</span></a></li>
-                            <li><a href="#" title="">ID (Inches) <span class="pull-right">{{$product->idInches}}</span></a></li>
-                            <li><a href="#" title="">ID (mm) <span class="pull-right">{{$product->idMM}}</span></a></li>
-                            <li><a href="#" title="">Thread (Sort) <span class="pull-right">{{$product->threadSort}}</span></a></li>
-                            <li><a href="#" title="">Thread (mm) <span class="pull-right">{{$product->threadMM}}</span></a></li>
-                            <li><a href="#" title="">Thread  (Inches) <span class="pull-right">{{$product->threadInches}}</span></a></li>
-                            <li><a href="#" title="">Per Inch <span class="pull-right">{{$product->perInch}}</span></a></li>
-                            <li><a href="#" title="">Gaskets/ I. Gskt. <span class="pull-right">{{$product->gaskets}}</span></a></li>
-                            <li><a href="#" title="">Features / Contains <span class="pull-right">{{$product->features}}</span></a></li>
+                            @if($product->baldwinPart == "-")
+                                <li style="display: none;"><a href="#" title="">BALDWIN PART NO. <span class="pull-right">{{$product->baldwinPart}}</span></a></li>
+                            @else
+                                <li><a href="#" title="">BALDWIN PART NO. <span class="pull-right">{{$product->baldwinPart}}</span></a></li>
+                            @endif
+                            @if($product->excopart == "-")
+                                <li style="display: none;"><a href="#" title="">EXCO PARTNO. <span class="pull-right">{{$product->excopart}}</span></a></li>
+                            @else
+                                <li><a href="#" title="">EXCO PARTNO. <span class="pull-right">{{$product->excopart}}</span></a></li>
+                            @endif
+                            @if($product->lengthInch == "-")
+                                <li style="display: none;"><a href="#" title="">Length (Inches) <span class="pull-right">{{$product->lengthInch}}</span></a></li>
+                            @else
+                                <li><a href="#" title="">Length (Inches) <span class="pull-right">{{$product->lengthInch}}</span></a></li>
+                            @endif
+                            @if($product->lengthMM == "-")
+                                <li style="display: none;"><a href="#" title="">Length (mm) <span class="pull-right">{{$product->lengthMM}}</span></a></li>
+                            @else
+                                <li><a href="#" title="">Length (mm) <span class="pull-right">{{$product->lengthMM}}</span></a></li>
+                            @endif
+                            @if($product->widthMM == "-")
+                                <li style="display: none;"><a href="#" title="">Width (mm) <span class="pull-right">{{$product->widthMM}}</span></a></li>
+                            @else
+                                <li><a href="#" title="">Width (mm) <span class="pull-right">{{$product->widthMM}}</span></a></li>
+                            @endif
+                            @if($product->heightMM == "-")
+                                <li style="display: none;"><a href="#" title="">Height  (mm) <span class="pull-right">{{$product->heightMM}}</span></a></li>
+                            @else
+                                <li><a href="#" title="">Height  (mm) <span class="pull-right">{{$product->heightMM}}</span></a></li>
+                            @endif
+                            @if($product->widthInches == "-")
+                                <li style="display: none;"><a href="#" title="">Width (Inches) <span class="pull-right">{{$product->widthInches}}</span></a></li>
+                            @else
+                                <li><a href="#" title="">Width (Inches) <span class="pull-right">{{$product->widthInches}}</span></a></li>
+                            @endif
+                            @if($product->heightInches == "-")
+                                <li style="display: none;"><a href="#" title="">Height (Inches) <span class="pull-right">{{$product->heightInches}}</span></a></li>
+                            @else
+                                <li><a href="#" title="">Height (Inches) <span class="pull-right">{{$product->heightInches}}</span></a></li>
+                            @endif
+                            @if($product->outlet == "-")
+                                <li style="display: none;"><a href="#" title="">Outlet <span class="pull-right">{{$product->outlet}}</span></a></li>
+                            @else
+                                <li><a href="#" title="">Outlet <span class="pull-right">{{$product->outlet}}</span></a></li>
+                            @endif
+                            @if($product->odInches == "-")
+                                <li style="display:none;"><a href="#" title="">OD (Inches) <span class="pull-right">{{$product->odInches}}</span></a></li>
+                            @else
+                                <li><a href="#" title="">OD (Inches) <span class="pull-right">{{$product->odInches}}</span></a></li>
+                            @endif
+                            @if($product->odMM == "-")
+                                <li style="display: none;"><a href="#" title="">OD (mm) <span class="pull-right">{{$product->odMM}}</span></a></li>
+                            @else
+                                <li><a href="#" title="">OD (mm) <span class="pull-right">{{$product->odMM}}</span></a></li>
+                            @endif
+                            @if($product->baldwinPart == "-")
+                                <li style="display: none;"><a href="#" title="">OD2 (Inches) <span class="pull-right">{{$product->baldwinPart}}</span></a></li>
+                            @else
+                                <li><a href="#" title="">OD2 (Inches) <span class="pull-right">{{$product->baldwinPart}}</span></a></li>
+                            @endif
+                            @if($product->odMM2 == "-")
+                                <li style="display: none;"><a href="#" title="">OD2 (mm) <span class="pull-right">{{$product->odMM2}}</span></a></li>
+                            @else
+                                <li><a href="#" title="">OD2 (mm) <span class="pull-right">{{$product->odMM2}}</span></a></li>
+                            @endif
+                            @if($product->idInches == "-")
+                                <li style="display: none;"><a href="#" title="">ID (Inches) <span class="pull-right">{{$product->idInches}}</span></a></li>
+                            @else
+                                <li><a href="#" title="">ID (Inches) <span class="pull-right">{{$product->idInches}}</span></a></li>
+                            @endif
+                            @if($product->idMM == "-")
+                                <li style="display: none;"><a href="#" title="">ID (mm) <span class="pull-right">{{$product->idMM}}</span></a></li>
+                            @else
+                                <li><a href="#" title="">ID (mm) <span class="pull-right">{{$product->idMM}}</span></a></li>
+                            @endif
+                            @if($product->threadSort == "-")
+                                <li style="display: none;"><a href="#" title="">Thread (Sort) <span class="pull-right">{{$product->threadSort}}</span></a></li>
+                            @else
+                                <li><a href="#" title="">Thread (Sort) <span class="pull-right">{{$product->threadSort}}</span></a></li>
+                            @endif
+                            @if($product->threadMM == "-")
+                                <li style="display: none;"><a href="#" title="">Thread (mm) <span class="pull-right">{{$product->threadMM}}</span></a></li>
+                            @else
+                                <li><a href="#" title="">Thread (mm) <span class="pull-right">{{$product->threadMM}}</span></a></li>
+                            @endif
+                            @if($product->threadInches == "-")
+                                <li style="display: none;"><a href="#" title="">Thread  (Inches) <span class="pull-right">{{$product->threadInches}}</span></a></li>
+                            @else
+                                <li><a href="#" title="">Thread  (Inches) <span class="pull-right">{{$product->threadInches}}</span></a></li>
+                            @endif
+                            @if($product->perInch == "-")
+                                <li style="display: none;"><a href="#" title="">Per Inch <span class="pull-right">{{$product->perInch}}</span></a></li>
+                            @else
+                                <li><a href="#" title="">Per Inch <span class="pull-right">{{$product->perInch}}</span></a></li>
+                            @endif
+                            @if($product->gaskets == "-")
+                                <li style="display: none;"><a href="#" title="">Gaskets/ I. Gskt. <span class="pull-right">{{$product->gaskets}}</span></a></li>
+                            @else
+                                <li><a href="#" title="">Gaskets/ I. Gskt. <span class="pull-right">{{$product->gaskets}}</span></a></li>
+                            @endif
+                            @if($product->features == "-")
+                                <li style="display: none;"><a href="#" title="">Features / Contains <span class="pull-right">{{$product->features}}</span></a></li>
+                            @else
+                                <li><a href="#" title="">Features / Contains <span class="pull-right">{{$product->features}}</span></a></li>
+                            @endif
                         @endforeach
                     @endif
                 </ul>

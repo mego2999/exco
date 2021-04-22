@@ -14,13 +14,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+ return view('search');
 });
 
-
-Route::get('/search', function () {
-    return view('search');
-});
 
 Route::get('/searchresults', function () {
     return view('searchresults');
@@ -40,3 +36,5 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/relate/',[\App\Http\Controllers\relations::class, 'relation'])->name('mego');
 
 Route::get('description/{part}',[\App\Http\Controllers\relations::class, 'description'])->name('description');
+
+Route::get('advancedsearch/{thedata}',[\App\Http\Controllers\relations::class, 'advancedsearch'])->name('advancedsearch');

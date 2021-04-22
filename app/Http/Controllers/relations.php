@@ -67,4 +67,13 @@ class relations extends Controller
         return view('description',compact('exco'));
 
     }
+
+
+    public function advancedsearch($thedata)
+    {
+//        $states = crossref::where('country_id',$thedata)->pluck("name", "id");
+//        return json_encode($states);
+        return view('advancedsearch');
+    }
+
 }
