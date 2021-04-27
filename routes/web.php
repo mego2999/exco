@@ -14,14 +14,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
- return view('search');
+ return view('welcome');
 });
 
+Route::get('/search', function () {
+    return view('search');
+});
 
 Route::get('/searchresults', function () {
     return view('searchresults');
 })->name("dina");
-
 
 
 Route::group(['prefix'=>'data', 'middleware' => ['auth:web']], function(){
@@ -37,4 +39,25 @@ Route::get('/relate/',[\App\Http\Controllers\relations::class, 'relation'])->nam
 
 Route::get('description/{part}',[\App\Http\Controllers\relations::class, 'description'])->name('description');
 
-Route::get('advancedsearch/{thedata}',[\App\Http\Controllers\relations::class, 'advancedsearch'])->name('advancedsearch');
+Route::get('advancedsearch/',[\App\Http\Controllers\relations::class, 'advancedsearch'])->name('advancedsearch');
+
+
+############################# AJAX ##############################
+
+Route::get('equipmentType/{thedata}',[\App\Http\Controllers\relations::class,'equipmentType']);
+
+
+Route::get('getCompanies/{mydata}',[\App\Http\Controllers\relations::class,'getCompanies']);
+
+Route::get('getData/{finaldata}',[\App\Http\Controllers\relations::class,'getData']);
+
+Route::get('make/{equipmentTypeID}',[\App\Http\Controllers\relations::class,'getMake']);
+
+Route::get('model/{makeID}',[\App\Http\Controllers\relations::class,'getmodel']);
+
+Route::get('modelsn/{modelID}',[\App\Http\Controllers\relations::class,'getmodelsn']);
+
+Route::get('enginemanu/{modelID}',[\App\Http\Controllers\relations::class,'enginemanu']);
+
+############################# AJAX ##############################
+

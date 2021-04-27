@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\country;
 use App\Models\crossref;
 use App\Models\description;
+use App\Models\state;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -68,12 +70,81 @@ class relations extends Controller
 
     }
 
-
-    public function advancedsearch($thedata)
+    public function equipmentType($thedata)
     {
-//        $states = crossref::where('country_id',$thedata)->pluck("name", "id");
-//        return json_encode($states);
-        return view('advancedsearch');
+        $equipment = DB::table('application')
+            ->select('manufacturer', 'equipmentType')
+            ->where('manufacturer',$thedata)
+            ->distinct("equipmentType")
+            ->pluck("equipmentType","equipmentType");
+        return json_encode($equipment);
+    }
+
+    public function getMake($equipmentTypeID)
+    {
+        $make = DB::table('application')
+            ->select('make', 'equipmentType')
+            ->where('equipmentType',$equipmentTypeID)
+            ->distinct("equipmentType")
+            ->pluck("make","make");
+        return json_encode($make);
+    }
+
+    public function getmodel($makeID)
+    {
+        $model = DB::table('application')
+            ->select('make', 'model')
+            ->where('make',$makeID)
+            ->distinct("make")
+            ->pluck("model","model");
+        return json_encode($model);
+    }
+
+    public function getmodelsn($modelID)
+    {
+        $modelsn = DB::table('application')
+            ->select('modelsn', 'model')
+            ->where('model',$modelID)
+            ->distinct("model")
+            ->pluck("modelsn","modelsn");
+        return json_encode($modelsn);
+    }
+
+    public function enginemanu($modelID)
+    {
+        $enginemanufacturer = DB::table('application')
+            ->select('enginemanufacturer', 'model')
+            ->where('model',$modelID)
+            ->distinct("model")
+            ->pluck("enginemanufacturer","enginemanufacturer");
+        return json_encode($enginemanufacturer);
+    }
+
+    /*public function getCompanies($mydata){
+        $company = DB::table('companies')
+            ->select('companies.*')
+            ->where('user_id',$mydata)
+            ->pluck("name", "id");
+        return json_encode($company);
+    }*/
+
+    public function getData($finaldata){
+        $mycompanies = DB::table('companies')
+            ->select('companies.*')
+            ->where('id',$finaldata)
+            ->get();
+        return view('advancedsearch',compact('mycompanies'));
+
+    }
+
+
+
+    public function advancedsearch()
+    {
+        $country = DB::table('country')
+            ->select('country.*')
+            ->get();
+        return view('advancedsearch',compact('country'));
     }
 
 }
