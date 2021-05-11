@@ -1,6 +1,7 @@
+@include('navbar')
 <html>
 <head>
-    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <meta charset="utf-8">
@@ -9,11 +10,14 @@
     <link href='//netdna.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css' rel='stylesheet'/>
 
 <style>
+    li{
+        font-weight: bold;
+    }
     .single {
         padding: 30px 15px;
         margin-top: 5px;
-        background: #fcfcfc;
-        border: 1px solid #f0f0f0; }
+        background: rgba(255, 255, 255, 0.5);
+        border: 1px solid rgba(255, 255, 255, 0.3); }
     .single h3.side-title {
         margin: 0;
         margin-bottom: 10px;
@@ -47,15 +51,16 @@
 </head>
 
 <body>
+<center><a href="{{Route('mainpage')}}"><p style="color:white; "><u><i class="fa fa-arrow-left" aria-hidden="true"></i> Back To Main Search</u></p></a></center>
 
 <div class="container">
     <div class="row">
-        <div class="col-sm-4">
+        <div class="col-sm-12">
             <!-- Category -->
             <div class="single category">
                 <h3 class="side-title">Product Description</h3>
                 <ul class="list-unstyled">
-                    @if(isset($mego) && $mego -> count() > 0)
+                    @if(isset($mego))
                         @foreach($mego as $product)
                             @if($product->baldwinPart == "-")
                     <li style="display: none;"><a href="#" title="">BALDWIN PART NO. <span class="pull-right">{{$product->baldwinPart}}</span></a></li>

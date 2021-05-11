@@ -14,7 +14,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
- return view('welcome');
+    return view('search');
+})->name('mainpage');
+
+Route::get('/nav', function () {
+    return view('navbar');
 });
 
 Route::get('/search', function () {
@@ -24,6 +28,10 @@ Route::get('/search', function () {
 Route::get('/searchresults', function () {
     return view('searchresults');
 })->name("dina");
+
+Route::get('/mainsearchresults', function () {
+    return view('mainsearchresults');
+});
 
 
 Route::group(['prefix'=>'data', 'middleware' => ['auth:web']], function(){
@@ -36,6 +44,8 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/relate/',[\App\Http\Controllers\relations::class, 'relation'])->name('mego');
+Route::get('/product/',[\App\Http\Controllers\relations::class, 'product'])->name('product');
+Route::get('/cross/',[\App\Http\Controllers\relations::class, 'cross'])->name('cross');
 
 Route::get('description/{part}',[\App\Http\Controllers\relations::class, 'description'])->name('description');
 
@@ -46,18 +56,33 @@ Route::get('advancedsearch/',[\App\Http\Controllers\relations::class, 'advanceds
 
 Route::get('equipmentType/{thedata}',[\App\Http\Controllers\relations::class,'equipmentType']);
 
-
 Route::get('getCompanies/{mydata}',[\App\Http\Controllers\relations::class,'getCompanies']);
 
-Route::get('getData/{finaldata}',[\App\Http\Controllers\relations::class,'getData']);
+Route::get('getData/{manufacturer}/{equipmentType}/{make}/{model}/{modelSN}/{engineManufacturer}/{engine}/{engineSerial}/{year}',[\App\Http\Controllers\relations::class,'getData']);
 
-Route::get('make/{equipmentTypeID}',[\App\Http\Controllers\relations::class,'getMake']);
+Route::get('make/{equipmentTypeID}/{manufacturer}',[\App\Http\Controllers\relations::class,'getMake']);
 
-Route::get('model/{makeID}',[\App\Http\Controllers\relations::class,'getmodel']);
+Route::get('model/{makeID}/{manufacturer}/{equipmentType}',[\App\Http\Controllers\relations::class,'getmodel']);
 
-Route::get('modelsn/{modelID}',[\App\Http\Controllers\relations::class,'getmodelsn']);
+Route::get('modelsn/{modelID}/{makeID}/{manufacturer}/{equipmentType}',[\App\Http\Controllers\relations::class,'getmodelsn']);
 
-Route::get('enginemanu/{modelID}',[\App\Http\Controllers\relations::class,'enginemanu']);
+Route::get('enginemanu/{modelID}/{makeID}/{manufacturer}/{equipmentType}',[\App\Http\Controllers\relations::class,'enginemanu']);
+
+Route::get('engine/{enginemanuID}/{modelID}/{makeID}/{manufacturer}/{equipmentType}',[\App\Http\Controllers\relations::class,'getIngine']);
+
+Route::get('engineSN/{engineID}/{enginemanuID}/{modelID}/{makeID}/{manufacturer}/{equipmentType}',[\App\Http\Controllers\relations::class,'getIngineSN']);
+
+Route::get('year/{engineID}/{enginemanuID}/{modelID}/{makeID}/{manufacturer}/{equipmentType}',[\App\Http\Controllers\relations::class,'year']);
 
 ############################# AJAX ##############################
+
+
+
+############################# Sidebar ##############################
+
+Route::get('/dimensions', function () {
+    return view('sidebar.dimensions');
+})->name("dimensions");
+
+############################# Sidebar ##############################
 
